@@ -11,7 +11,7 @@ public class DbConnection {
 
     public static Connection getCnx() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        String url = "jdbc:mysql://localhost:3306/GestionClient";
+        String url = "jdbc:mysql://localhost:3307/GestionClient";
         String username = "root";
         String password = "";
         if(cnx==null){

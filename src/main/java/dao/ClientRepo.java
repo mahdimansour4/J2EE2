@@ -33,4 +33,27 @@ public class ClientRepo {
         }
         return c;
     }
+    public void listerClient() throws Exception {
+        String sql = "SELECT * FROM `client`";
+        Statement st = cnx.createStatement();
+        ResultSet rs = st.executeQuery(sql);
+        while (rs.next()) {
+            System.out.println("ID: " + rs.getInt(1) + " Nom: " + rs.getString(2) + " Prenom: " + rs.getString(3) + " NumTel: " + rs.getInt(4));
+        }
+    }
+    public void supprimerClient(int id) throws Exception {
+        String sql = "DELETE FROM `client` WHERE `id` = " + id;
+        Statement st = cnx.createStatement();
+        st.executeUpdate(sql);
+    }
+    public void modifierClient(Client c) throws Exception {
+        String sql = "UPDATE `client` SET `nom` = ?, `prenom` = ?, `numTel` = ? WHERE `id` = ?";
+        PreparedStatement ps = cnx.prepareStatement(sql);
+        ps.setString(1, c.getNom());
+        ps.setString(2, c.getPrenom());
+        ps.setInt(3, c.getNumTel());
+        ps.setInt(4, c.getId());
+        ps.executeUpdate();
+    }
+
 }

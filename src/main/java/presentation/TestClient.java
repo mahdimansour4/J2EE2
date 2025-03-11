@@ -13,6 +13,9 @@ public class TestClient {
             gc.addClient(c1);
             gc.addClient(c2);
             gc.addClient(c3);
+            gc.updateClient(new Client(2,"C","C",06));
+            gc.deleteClient(3);
+            gc.listClient();
             System.out.print(gc.searchClient(2));
         }catch(Exception e){
             e.printStackTrace();
